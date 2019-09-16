@@ -77,3 +77,9 @@ printers[:lambda] = function (io, ex)
   println(io)
   print(io, ex.args[1])
 end
+
+function print_stmt(io::IO, ex::IR)
+  io = IOContext(io, :indent=>get(io, :indent, 0)+2)
+  println(io)
+  show(io, ex)
+end
